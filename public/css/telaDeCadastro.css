@@ -60,6 +60,10 @@ body{
 	height: 100px;
 }
 
+/* .labelInputNome .labelInput:last-child{
+	grid-column: 1/3;
+} */
+
 /* ENDEREÇO PESSOAL */
 
 .adressCamps{
@@ -78,6 +82,13 @@ body{
 .adressCamps .labelInput{
 	margin: 0 15px;
 	height: 100px;
+}
+
+.labelInputButton{
+	display: grid;
+	grid-template-columns: 1fr;
+	margin: 0 20%;
+	height: 32px;
 }
 
 /* RESPONSIVIDADE */

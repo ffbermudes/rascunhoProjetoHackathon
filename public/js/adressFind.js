@@ -3,30 +3,31 @@ export class adressFind {
 		this.selectCepElement = document.querySelector(elementClassOrId);
 	}
 
-	//EVENTLISTENER >> APENAS NÚMEROS SERÃO PERMITIDOS NO CAMPO SELECIONADO.
+	// EVENTLISTENER >> APENAS NÚMEROS SERÃO PERMITIDOS NO CAMPO SELECIONADO.
 	onlyNumbers() {
-		this.selectCepElement.addEventListener("keypress", (e) => {
-			const onlyNumbers = /\D/;
-			const key = e.key;
-			if (onlyNumbers.test(key)) {
-				e.preventDefault();
-				return;
+		this.selectCepElement.addEventListener("input", (e) => {
+			const onlyNumbers = /\d$/;
+			const value = e.target.value;
+			console.log(value.length);
+			if (!onlyNumbers.test(value)) {
+				e.target.value = value.replace(/[^\d]/g, '');
 			}
 		});
 	}
 
-	//EVENTLISTENER >> APÓS 8 DIGITOS BLOQUEAR CAMPO.
-	//APÓS AQUI AS FUNÇÕES SERÃO EXECUTADAS EM CADEIA.
+	// EVENTLISTENER >> APÓS 8 DIGITOS EXECUTAR API E TIRAR FOCO DO CAMPO.
+	// APÓS AQUI AS FUNÇÕES SERÃO EXECUTADAS EM CADEIA.
 	onAftereightDigits() {
-		this.selectCepElement.addEventListener("keyup", (e) => {
+		this.selectCepElement.addEventListener("input", (e) => {
 			const valueCep = e.target.value;
-			if (valueCep.length === 8) this.getAddress(valueCep);
-		})
+			// if (valueCep.length === 8) this.getAddress(valueCep);
+			const retornofunc = valueCep.length === 8 ? this.getAddress(valueCep) : false; //teste
+			return retornofunc;
+		});
 	}
 
 	async getAddress(valueCep) {
 		console.log(valueCep);
-		this.selectCepElement.blur();
 
 		const apiUrl = `https://viacep.com.br/ws/${valueCep}/json/`;
 
@@ -38,6 +39,7 @@ export class adressFind {
 
 		this.carregaDom(data);
 
+		this.selectCepElement.blur();
 	}
 
 	carregaDom(objct) {
@@ -46,10 +48,9 @@ export class adressFind {
 		const bairro = objct.bairro;
 		const cidade = objct.localidade;
 
-		const campUf = document.querySelector("#adressStateText").value = uf;
-		const campRua = document.querySelector("#adressStreetText").value = rua;
-		const campBairro = document.querySelector("#adressNeighborhoodText").value = bairro;
-		const campCidade = document.querySelector("#adressCityText").value = cidade;
+		document.querySelector("#adressStateText").value = uf;
+		document.querySelector("#adressStreetText").value = rua;
+		document.querySelector("#adressNeighborhoodText").value = bairro;
+		document.querySelector("#adressCityText").value = cidade;
 	}
-
 }

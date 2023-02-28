@@ -3,10 +3,16 @@ import { navegadorCache } from "./Componentes/LocalStorage.js";
 import { adressFind } from "./public/js/adressFind.js";
 
 //Seleciona o campo de CEP. E permite apenas números.
-const buscadorEnderecos = new adressFind("#adressCepText");
+const viaCepApi = new adressFind("#adressCepText");
+//LIGA O EVENTLISTENER DAS DUAS FUNÇÕES COM INPUT
+	//SOMENTE NÚMEROS SERÃO PERMITIDOS NO CAMPO.
+	//RECOLHE OS DADOS DIGITADOS NO CEP E CONSULTA DADOS NA API.
+viaCepApi.onlyNumbers();
+viaCepApi.onAftereightDigits();
 
-//LIGA O EVENTLISTENER DE KEYPRESS E KEYUP
-//KEYPRESS >> SOMENTE NÚMEROS SERÃO PERMITIDOS NO CAMPO.
-//KEYUP >> RECOLHE OS DADOS DIGITADOS NO CEP E CONSULTA DADOS NA API.
-buscadorEnderecos.onlyNumbers(); //KEYPRESS
-buscadorEnderecos.onAftereightDigits(); //KEYUP
+//IMPEDIR EXECUÇÃO DO FORMULÁRIO.
+document.querySelector("form").addEventListener("submit", (e)=>{
+	const pessoa = new Pessoa();
+	console.log(pessoa)
+	e.preventDefault();
+});
