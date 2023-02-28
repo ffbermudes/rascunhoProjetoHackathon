@@ -1,12 +1,12 @@
 import { Pessoa } from "./Componentes/Pessoa.js";
 import { navegadorCache } from "./Componentes/LocalStorage.js";
+import { adressFind } from "./public/js/adressFind.js";
 
-// Variávies obrigatórias
-const pessoa = new Pessoa("Filipe", "dsadasdsa");
-const storage = new navegadorCache(localStorage);
+//Seleciona o campo de CEP. E permite apenas números.
+const buscadorEnderecos = new adressFind("#adressCepText");
 
-//Transformando em JSON
-const pessoaJson = pessoa.transformToJson();
-
-console.log(pessoaJson);
-storage.save('vitima1', pessoaJson);
+//LIGA O EVENTLISTENER DE KEYPRESS E KEYUP
+//KEYPRESS >> SOMENTE NÚMEROS SERÃO PERMITIDOS NO CAMPO.
+//KEYUP >> RECOLHE OS DADOS DIGITADOS NO CEP E CONSULTA DADOS NA API.
+buscadorEnderecos.onlyNumbers(); //KEYPRESS
+buscadorEnderecos.onAftereightDigits(); //KEYUP
