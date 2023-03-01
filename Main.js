@@ -1,5 +1,4 @@
 import { Pessoa } from "./Componentes/Pessoa.js";
-import { navegadorCache } from "./Componentes/LocalStorage.js";
 import { adressFind } from "./public/js/adressFind.js";
 import { Conversor } from "./Conversor.js";
 
@@ -13,12 +12,8 @@ viaCepApi.onAftereightDigits();
 
 //IMPEDIR EXECUÇÃO DO FORMULÁRIO.
 document.querySelector("form").addEventListener("submit", e => {
-  const pessoa = new Pessoa();
-  console.log(pessoa);
-  e.preventDefault();
+	const pessoa = new Pessoa();
+	const convertJSON = new Conversor(pessoa);
+	convertJSON.saveToLocalStorage();
+	e.preventDefault();
 });
-
-const conversor = new Conversor("João", "Paraguai");
-
-conversor.saveToLocalStorage();
-// conversor.converteToJSON();
