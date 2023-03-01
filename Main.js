@@ -10,10 +10,11 @@ const viaCepApi = new adressFind("#adressCepText");
 viaCepApi.onlyNumbers();
 viaCepApi.onAftereightDigits();
 
-//IMPEDIR EXECUÇÃO DO FORMULÁRIO.
+const insertLocalStorage = new Conversor();
+
 document.querySelector("form").addEventListener("submit", e => {
 	const pessoa = new Pessoa();
-	const convertJSON = new Conversor(pessoa);
-	convertJSON.saveToLocalStorage();
+	insertLocalStorage.object = pessoa;
+	insertLocalStorage.saveToLocalStorage()
 	e.preventDefault();
 });

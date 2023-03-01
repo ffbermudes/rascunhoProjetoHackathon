@@ -1,14 +1,13 @@
 export class Conversor {
-	constructor(objeto) {
-		this.object = objeto;
-	}
+	arrayDeObjetos = [];
+	object;
 
 	converteToJSON() {
-		const pessoaJson = JSON.stringify(this.object);
-		return pessoaJson;
+		this.arrayDeObjetos.push(this.object);
+		return JSON.stringify(this.arrayDeObjetos);
 	}
 
 	saveToLocalStorage() {
-		localStorage.setItem("pessoa", this.converteToJSON());
+		localStorage.setItem("Pessoa", this.converteToJSON());
 	}
 }
