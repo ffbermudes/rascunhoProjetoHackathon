@@ -1,6 +1,6 @@
-import { Pessoa } from "./Componentes/Pessoa.js";
+import { Pessoa } from "./public/js/Pessoa.js";
 import { adressFind } from "./public/js/adressFind.js";
-import { Conversor } from "./Conversor.js";
+import { Conversor } from "./public/js/Conversor.js";
 
 //Seleciona o campo de CEP. E permite apenas números.
 const viaCepApi = new adressFind("#adressCepText");
@@ -13,8 +13,8 @@ viaCepApi.onAftereightDigits();
 const insertLocalStorage = new Conversor();
 
 document.querySelector("form").addEventListener("submit", e => {
+	e.preventDefault();
 	const pessoa = new Pessoa();
 	insertLocalStorage.object = pessoa;
 	insertLocalStorage.saveToLocalStorage()
-	e.preventDefault();
 });
