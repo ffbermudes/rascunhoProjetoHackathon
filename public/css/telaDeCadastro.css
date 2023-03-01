@@ -110,3 +110,7 @@ body{
 		display: block;
 	}
 }
+
+.msgErroOff{
+	display: none;
+}

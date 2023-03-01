@@ -1,6 +1,11 @@
 import { Pessoa } from "./public/js/Pessoa.js";
 import { adressFind } from "./public/js/adressFind.js";
 import { Conversor } from "./public/js/Conversor.js";
+import { nameCamp, lastNameCamp } from "./public/js/validateCamps.js";
+
+(()=>{
+	nameCamp(); lastNameCamp();
+})()
 
 //Seleciona o campo de CEP. E permite apenas números.
 const viaCepApi = new adressFind("#adressCepText");
