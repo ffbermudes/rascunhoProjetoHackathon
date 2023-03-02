@@ -1,63 +1,63 @@
-*{
-	box-sizing: border-box;
-	padding: 0;
-	margin: 0;
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
-body{
-	display: grid;
-	grid-template-columns: 1fr minmax(350px, 900px) 1fr;
-	grid-template-rows: 100px 1fr;
-}
-
-.header{
-	grid-column: 1/4;
-	background-color: #999;
-	display: grid;
-	grid-template-columns: repeat(6, 1fr);
+body {
+  display: grid;
+  grid-template-columns: 1fr minmax(350px, 900px) 1fr;
+  grid-template-rows: 100px 1fr;
 }
 
-.header>i{
-	grid-column: 1;
-	text-align: center;
-	line-height: 100px;
+.header {
+  grid-column: 1/4;
+  background-color: #999;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
 }
 
-.header>h1{
-	grid-column: 2/6;
-	text-align: center;
-	line-height: 100px
+.header > i {
+  grid-column: 1;
+  text-align: center;
+  line-height: 100px;
 }
 
-#logoDesktop{
-	display: block;
+.header > h1 {
+  grid-column: 2/6;
+  text-align: center;
+  line-height: 100px;
 }
 
-#logoMobile{
-	display: none;
+#logoDesktop {
+  display: block;
 }
 
-.containerForm{
-	grid-column: 2;
-	grid-row: 2/3;
-	padding: 5px;
+#logoMobile {
+  display: none;
+}
+
+.containerForm {
+  grid-column: 2;
+  grid-row: 2/3;
+  padding: 5px;
 }
 
 /* DADOS PESSOAIS */
 
-.labelInputNome{
-	display: grid;
-	grid-template-columns: repeat(2, 1fr);
+.labelInputNome {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
 }
 
-.labelInputNome .divTitulo{
-	grid-column: 1/3;
-	text-align: center;
-	height: auto;
+.labelInputNome .divTitulo {
+  grid-column: 1/3;
+  text-align: center;
+  height: auto;
 }
 
-.labelInputNome .labelInput{
-	margin: 0 15px;
-	height: 100px;
+.labelInputNome .labelInput {
+  margin: 0 15px;
+  height: 100px;
 }
 
 /* .labelInputNome .labelInput:last-child{
@@ -66,51 +66,51 @@ body{
 
 /* ENDEREÇO PESSOAL */
 
-.adressCamps{
-	display: grid;
-	grid-template-columns: repeat(2, 2fr);
-	justify-content: center;
-	align-items: center;
+.adressCamps {
+  display: grid;
+  grid-template-columns: repeat(2, 2fr);
+  justify-content: center;
+  align-items: center;
 }
 
-.adressCamps .divTitulo{
-	grid-column: 1/3;
-	text-align: center;
-	height: auto;
+.adressCamps .divTitulo {
+  grid-column: 1/3;
+  text-align: center;
+  height: auto;
 }
 
-.adressCamps .labelInput{
-	margin: 0 15px;
-	height: 100px;
+.adressCamps .labelInput {
+  margin: 0 15px;
+  height: 100px;
 }
 
-.labelInputButton{
-	display: grid;
-	grid-template-columns: 1fr;
-	margin: 0 20%;
-	height: 32px;
+.labelInputButton {
+  display: grid;
+  grid-template-columns: 1fr;
+  margin: 0 20%;
+  height: 32px;
 }
 
 /* RESPONSIVIDADE */
 
-@media (max-width: 650px){
-	.header>h1{
-		grid-column: 2/7;
-	}
-	.labelInputNome .labelInput{
-		grid-column: 1/3 !important;
-	}
-	.adressCamps .labelInput{
-		grid-column: 1/3 !important;
-	}
-	#logoDesktop{
-		display: none;
-	}
-	#logoMobile{
-		display: block;
-	}
+@media (max-width: 650px) {
+  .header > h1 {
+    grid-column: 2/7;
+  }
+  .labelInputNome .labelInput {
+    grid-column: 1/3 !important;
+  }
+  .adressCamps .labelInput {
+    grid-column: 1/3 !important;
+  }
+  #logoDesktop {
+    display: none;
+  }
+  #logoMobile {
+    display: block;
+  }
 }
 
-.msgErroOff{
-	display: none;
+.msgErroOff {
+  display: none;
 }
