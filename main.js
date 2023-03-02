@@ -1,11 +1,12 @@
 import { Pessoa } from "./public/js/Pessoa.js";
 import { adressFind } from "./public/js/adressFind.js";
 import { Conversor } from "./public/js/Conversor.js";
-import { nameCamp, lastNameCamp } from "./public/js/validateCamps.js";
+import { nameCamp, lastNameCamp, phoneCamp } from "./public/js/validateCamps.js";
 
 (() => {
   nameCamp();
   lastNameCamp();
+  phoneCamp();
 })();
 
 //Seleciona o campo de CEP. E permite apenas números.
