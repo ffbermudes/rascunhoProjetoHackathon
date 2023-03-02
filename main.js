@@ -2,7 +2,6 @@ import { Pessoa } from "./public/js/Pessoa.js";
 import { adressFind } from "./public/js/adressFind.js";
 import { Conversor } from "./public/js/Conversor.js";
 import { nameCamp, lastNameCamp } from "./public/js/validateCamps.js";
-import { inserir } from "./teste.js";
 
 (() => {
   nameCamp();

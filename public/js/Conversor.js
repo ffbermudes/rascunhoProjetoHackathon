@@ -1,21 +1,22 @@
+// Esta Classe Está Pegando os Dados Digitados no DOM e Está Armazenando no LocalStorage.
+
 export class Conversor {
-	arrayDeObjetos = [];
-	object;
+  arrayDeObjetos = [];
+  object;
 
-	converteToJSON() {
-		this.arrayDeObjetos.push(this.object);
-		return JSON.stringify(this.arrayDeObjetos);
-	}
+  converteToJSON() {
+    this.arrayDeObjetos.push(this.object);
+    return JSON.stringify(this.arrayDeObjetos);
+  }
 
-	saveToLocalStorage() {
-		if(!localStorage.hasOwnProperty("Pessoa")){
-			localStorage.setItem("Pessoa", this.converteToJSON());
-		}
-		else{
-			const getArrayLocalStorage = JSON.parse(localStorage.getItem("Pessoa"));
-			getArrayLocalStorage.push(this.object);
-			console.log(getArrayLocalStorage);
-			localStorage.setItem("Pessoa", JSON.stringify(getArrayLocalStorage));
-		}
-	}
+  saveToLocalStorage() {
+    if (!localStorage.hasOwnProperty("Pessoa")) {
+      localStorage.setItem("Pessoa", this.converteToJSON());
+    } else {
+      const getArrayLocalStorage = JSON.parse(localStorage.getItem("Pessoa"));
+      getArrayLocalStorage.push(this.object);
+      console.log(getArrayLocalStorage);
+      localStorage.setItem("Pessoa", JSON.stringify(getArrayLocalStorage));
+    }
+  }
 }

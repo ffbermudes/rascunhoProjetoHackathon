@@ -1,27 +1,3 @@
-(function () {
-  "use strict";
-
-  var forms = document.querySelectorAll(".needs-validation");
-
-  Array.prototype.slice.call(forms).forEach(function (form) {
-    form.addEventListener(
-      "submit",
-      function (event) {
-        if (!form.checkValidity()) {
-          form.classList.add("was-validated");
-        } else {
-          inserir();
-          form.classList.remove("was-validated");
-          form.reset();
-        }
-        event.preventDefault();
-        event.stopPropagation();
-      },
-      false
-    );
-  });
-})();
-
 function getLocalStorage() {
   return JSON.parse(localStorage.getItem("bd_pessoas")) ?? [];
 }
@@ -47,6 +23,14 @@ function atualizarTabela() {
         <th scope="row">${index}</th>
         <td>${pessoa.nome}</td>
         <td>${pessoa.sobrenome}</td>
+				<td>${pessoa.telefone}</td>
+				<td>${pessoa.email}</td>
+				<td>${pessoa.cep}</td>
+				<td>${pessoa.rua}</td>
+				<td>${pessoa.numero}</td>
+				<td>${pessoa.cidade}</td>
+				<td>${pessoa.estado}</td>
+				<td>${pessoa.bairro}</td>
         <td>
             <button type="button" class="btn btn-danger" id="${index}" onclick="excluir(${index})">Excluir</button>
         </td>
@@ -60,6 +44,14 @@ function inserir() {
   const pessoa = {
     nome: document.getElementById("nameFirstNameText").value,
     sobrenome: document.getElementById("nameLastNameText").value,
+    telefone: document.getElementById("telefoneText").value,
+    email: document.getElementById("emailText").value,
+    cep: document.getElementById("adressCepText").value,
+    rua: document.getElementById("adressStreetText").value,
+    numero: document.getElementById("adressNumText").value,
+    cidade: document.getElementById("adressCityText").value,
+    estado: document.getElementById("adressStateText").value,
+    bairro: document.getElementById("adressNeighborhoodText").value,
   };
   const bd_pessoas = getLocalStorage();
   bd_pessoas.push(pessoa);
@@ -74,22 +66,4 @@ function excluir(index) {
   atualizarTabela();
 }
 
-function validarModelo() {
-  const bd_pessoas = getLocalStorage();
-  for (veiculo of bd_veiculos) {
-    if (sobrenome.value == veiculo.sobrenome) {
-      sobrenome.setCustomValidity("Este modelo de veículo já existe!");
-      feedbackModelo.innerText = "Este modelo de veículo já existe!";
-      return false;
-    } else {
-      sobrenome.setCustomValidity("");
-      feedbackModelo.innerText = "Informe o modelo do veículo corretamente.";
-    }
-  }
-  return true;
-}
-
 atualizarTabela();
-const sobrenome = document.getElementById("sobrenome");
-const feedbackModelo = document.getElementById("feedbackModelo");
-sobrenome.addEventListener("input", validarModelo);
